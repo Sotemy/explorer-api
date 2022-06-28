@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const asyncHandler = require('express-async-handler')
 const User = require('../models/usersModel')
+const env = require('../env')
 
 const protect = asyncHandler( async (req, res, next) => {
     let token;
@@ -12,7 +13,7 @@ const protect = asyncHandler( async (req, res, next) => {
 
             // verify token
 
-            const decoded = jwt.verify(token, process.env.JWT_SECRET)
+            const decoded = jwt.verify(token, env.JWT_SECRET)
 
             // get user from the token 
 
